@@ -4,7 +4,350 @@
     "title": "API V1",
     "version": "v1"
   },
+  "securityDefinitions": {
+    "keycloak": {
+      "type": "oauth2",
+      "authorizationUrl": "http://localhost:4000/auth/realms/PetsRankedUserAuth/protocol/openid-connect/auth",
+      "tokenUrl": "http://localhost:4000/auth/realms/PetsRankedUserAuth/protocol/openid-connect/token",
+      "flow": "accessCode",
+      "scopes": {
+      }
+    }
+  },
   "paths": {
+    "/pets": {
+      "get": {
+        "summary": "",
+        "tags": [
+          "Pets"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "summary": "",
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "Pet Created"
+          },
+          "422": {
+            "description": "Invalid Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Breed": {
+                    "type": "string"
+                  },
+                  "Energy": {
+                    "type": "integer"
+                  },
+                  "Allegiance": {
+                    "type": "integer"
+                  },
+                  "Intelligence": {
+                    "type": "integer"
+                  },
+                  "Territorial": {
+                    "type": "integer"
+                  },
+                  "Loyalty": {
+                    "type": "integer"
+                  },
+                  "Bonded": {
+                    "type": "integer"
+                  },
+                  "Noisy": {
+                    "type": "integer"
+                  },
+                  "ChildFriendly": {
+                    "type": "integer"
+                  },
+                  "AnimalFriendly": {
+                    "type": "integer"
+                  },
+                  "RaiseDifficulty": {
+                    "type": "integer"
+                  },
+                  "AdultSize": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "Breed",
+                  "Energy",
+                  "Allegiance",
+                  "Intelligence",
+                  "Territorial",
+                  "Loyalty",
+                  "Bonded",
+                  "Noisy",
+                  "ChildFriendly",
+                  "AnimalFriendly",
+                  "RaiseDifficulty",
+                  "AdultSize"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pets/{id}": {
+      "get": {
+        "summary": "",
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Breed": {
+                      "type": "string"
+                    },
+                    "Energy": {
+                      "type": "integer"
+                    },
+                    "Allegiance": {
+                      "type": "integer"
+                    },
+                    "Intelligence": {
+                      "type": "integer"
+                    },
+                    "Territorial": {
+                      "type": "integer"
+                    },
+                    "Loyalty": {
+                      "type": "integer"
+                    },
+                    "Bonded": {
+                      "type": "integer"
+                    },
+                    "Noisy": {
+                      "type": "integer"
+                    },
+                    "ChildFriendly": {
+                      "type": "integer"
+                    },
+                    "AnimalFriendly": {
+                      "type": "integer"
+                    },
+                    "RaiseDifficulty": {
+                      "type": "integer"
+                    },
+                    "AdultSize": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "Breed",
+                    "Energy",
+                    "Allegiance",
+                    "Intelligence",
+                    "Territorial",
+                    "Loyalty",
+                    "Bonded",
+                    "Noisy",
+                    "ChildFriendly",
+                    "AnimalFriendly",
+                    "RaiseDifficulty",
+                    "AdultSize"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "summary": "",
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Breed": {
+                      "type": "string"
+                    },
+                    "Energy": {
+                      "type": "integer"
+                    },
+                    "Allegiance": {
+                      "type": "integer"
+                    },
+                    "Intelligence": {
+                      "type": "integer"
+                    },
+                    "Territorial": {
+                      "type": "integer"
+                    },
+                    "Loyalty": {
+                      "type": "integer"
+                    },
+                    "Bonded": {
+                      "type": "integer"
+                    },
+                    "Noisy": {
+                      "type": "integer"
+                    },
+                    "ChildFriendly": {
+                      "type": "integer"
+                    },
+                    "AnimalFriendly": {
+                      "type": "integer"
+                    },
+                    "RaiseDifficulty": {
+                      "type": "integer"
+                    },
+                    "AdultSize": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Invalid Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Breed": {
+                    "type": "string"
+                  },
+                  "Energy": {
+                    "type": "integer"
+                  },
+                  "Allegiance": {
+                    "type": "integer"
+                  },
+                  "Intelligence": {
+                    "type": "integer"
+                  },
+                  "Territorial": {
+                    "type": "integer"
+                  },
+                  "Loyalty": {
+                    "type": "integer"
+                  },
+                  "Bonded": {
+                    "type": "integer"
+                  },
+                  "Noisy": {
+                    "type": "integer"
+                  },
+                  "ChildFriendly": {
+                    "type": "integer"
+                  },
+                  "AnimalFriendly": {
+                    "type": "integer"
+                  },
+                  "RaiseDifficulty": {
+                    "type": "integer"
+                  },
+                  "AdultSize": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "Breed",
+                  "Energy",
+                  "Allegiance",
+                  "Intelligence",
+                  "Territorial",
+                  "Loyalty",
+                  "Bonded",
+                  "Noisy",
+                  "ChildFriendly",
+                  "AnimalFriendly",
+                  "RaiseDifficulty",
+                  "AdultSize"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "",
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/users": {
       "get": {
         "summary": "Get all Users",
@@ -14,9 +357,6 @@
         "responses": {
           "200": {
             "description": "Success"
-          },
-          "404": {
-            "description": "Not Found"
           }
         }
       },
@@ -42,32 +382,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "Uid": {
+                    "type": "string"
+                  },
                   "Name": {
-                    "type": "string"
-                  },
-                  "Surname": {
-                    "type": "string"
-                  },
-                  "Username": {
                     "type": "string"
                   },
                   "Email": {
                     "type": "string"
-                  },
-                  "Password": {
-                    "type": "string"
-                  },
-                  "Phone": {
-                    "type": "string"
                   }
                 },
                 "required": [
-                  "Name",
-                  "Surname",
-                  "Username",
-                  "Email",
-                  "Password",
-                  "Phone"
+                  "uid",
+                  "name",
+                  "email"
                 ]
               }
             }
@@ -99,32 +427,20 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "Uid": {
+                      "type": "string"
+                    },
                     "Name": {
-                      "type": "string"
-                    },
-                    "Surname": {
-                      "type": "string"
-                    },
-                    "Username": {
                       "type": "string"
                     },
                     "Email": {
                       "type": "string"
-                    },
-                    "Password": {
-                      "type": "string"
-                    },
-                    "Phone": {
-                      "type": "string"
                     }
                   },
                   "required": [
-                    "Name",
-                    "Surname",
-                    "Username",
-                    "Email",
-                    "Password",
-                    "Phone"
+                    "uid",
+                    "name",
+                    "email"
                   ]
                 }
               }
@@ -158,22 +474,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "Uid": {
+                      "type": "string"
+                    },
                     "Name": {
                       "type": "string"
                     },
-                    "Surname": {
-                      "type": "string"
-                    },
-                    "Username": {
-                      "type": "string"
-                    },
                     "Email": {
-                      "type": "string"
-                    },
-                    "Password": {
-                      "type": "string"
-                    },
-                    "Phone": {
                       "type": "string"
                     }
                   }
@@ -194,32 +501,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "Uid": {
+                    "type": "string"
+                  },
                   "Name": {
-                    "type": "string"
-                  },
-                  "Surname": {
-                    "type": "string"
-                  },
-                  "Username": {
                     "type": "string"
                   },
                   "Email": {
                     "type": "string"
-                  },
-                  "Password": {
-                    "type": "string"
-                  },
-                  "Phone": {
-                    "type": "string"
                   }
                 },
                 "required": [
+                  "Uid",
                   "Name",
-                  "Surname",
-                  "Username",
-                  "Email",
-                  "Password",
-                  "Phone"
+                  "Email"
                 ]
               }
             }
@@ -252,6 +547,13 @@
       }
     }
   },
+  "security": [
+    {
+      "keycloak": [
+
+      ]
+    }
+  ],
   "servers": [
     {
       "url": "",

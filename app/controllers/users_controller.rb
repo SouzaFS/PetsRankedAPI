@@ -5,7 +5,12 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    render json: @users
+    if @users.any?
+      render json: @users
+    else
+      head :not_found
+    end
+    
   end
 
   # GET /users/1
@@ -46,6 +51,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:Name, :Surname, :Username, :Email, :Password, :Phone)
+      params.require(:user).permit(:Uid, :Name, :Email)
     end
 end
