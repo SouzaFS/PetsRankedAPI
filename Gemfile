@@ -43,3 +43,6 @@ end
 gem "rspec-rails"
 gem "mongoid"
 gem "rswag"
+gem "omniauth"
+gem "omniauth-keycloak"
+gem "jwt"

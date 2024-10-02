@@ -19,18 +19,15 @@ RSpec.describe 'api/users', type: :request do
             parameter name: :user, in: :body, schema: {
                 type: :object,
                 properties: {
+                    Uid: { type: :string },
                     Name: { type: :string },
-                    Surname: { type: :string },
-                    Username: { type: :string },
-                    Email: { type: :string },
-                    Password: { type: :string },
-                    Phone: { type: :string }
+                    Email: { type: :string }
                 },
-                required: [ 'Name' , 'Surname' , 'Username' , 'Email' , 'Password' , 'Phone' ]
+                required: [ 'uid' , 'name' , 'email' ]
             }
 
             response '201', 'User Created' do
-                let(:user) { { Name: 'name' , Surname: 'surname' , Username: 'username' , Email: 'email' , Password: 'password' , Phone: 'phone' } }
+                let(:user) { { Uid: 'id' , Name: 'name' , Email: 'email' } }
                 run_test!
             end
 
@@ -51,16 +48,13 @@ RSpec.describe 'api/users', type: :request do
             response '200', 'Success' do
                 schema type: :object,
                     properties: {
+                        Uid: { type: :string },
                         Name: { type: :string },
-                        Surname: { type: :string },
-                        Username: { type: :string },
                         Email: { type: :string },
-                        Password: { type: :string },
-                        Phone: { type: :string }
                     },
-                    required: [ 'Name' , 'Surname' , 'Username' , 'Email' , 'Password' , 'Phone' ]
+                    required: [ 'uid' , 'name' , 'email' ]
 
-                let(:id) { User.create(Name: 'name' , Surname: 'surname' , Username: 'username' , Email: 'email' , Password: 'password' , Phone: 'phone').id }
+                let(:id) { User.create(Uid: 'id' , Name: 'name' , Email: 'email').id }
                 run_test!
             end
 
@@ -80,29 +74,23 @@ RSpec.describe 'api/users', type: :request do
             parameter name: :user, in: :body, schema: {
                 type: :object,
                 properties: {
-                    Name: { type: :string },
-                    Surname: { type: :string },
-                    Username: { type: :string },
-                    Email: { type: :string },
-                    Password: { type: :string },
-                    Phone: { type: :string }
-                },
-                required: [ 'Name' , 'Surname' , 'Username' , 'Email' , 'Password' , 'Phone' ]
+                        Uid: { type: :string },
+                        Name: { type: :string },
+                        Email: { type: :string },
+                    },
+                    required: [ 'Uid' , 'Name' , 'Email' ]
             }
             
             response '200', 'Success' do
                 schema type: :object,
                     properties: {
+                        Uid: { type: :string },
                         Name: { type: :string },
-                        Surname: { type: :string },
-                        Username: { type: :string },
                         Email: { type: :string },
-                        Password: { type: :string },
-                        Phone: { type: :string }
                     }
 
-                let(:id) { User.create(Name: 'name' , Surname: 'surname' , Username: 'username' , Email: 'email' , Password: 'password' , Phone: 'phone').id }
-                let(:user) { { Name: 'name' , Surname: 'surname' , Username: 'username' , Email: 'email' , Password: 'password' , Phone: 'phone' } }
+                let(:id) { User.create(Uid: 'id' , Name: 'name' , Email: 'email').id }
+                let(:user) { { Uid: 'id' , Name: 'name' , Email: 'email' } }
 
                 run_test!
             end
@@ -127,7 +115,7 @@ RSpec.describe 'api/users', type: :request do
             parameter name: :id, in: :path, type: :string
             
             response '204', 'No Content' do
-                let(:id) { User.create(Name: 'name' , Surname: 'surname' , Username: 'username' , Email: 'email' , Password: 'password' , Phone: 'phone').id }
+                let(:id) { User.create(Uid: 'id' , Name: 'name' , Email: 'email').id }
                 
                 run_test!
             end

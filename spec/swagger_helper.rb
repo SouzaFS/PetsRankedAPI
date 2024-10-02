@@ -21,7 +21,21 @@ RSpec.configure do |config|
         title: 'API V1',
         version: 'v1'
       },
+      securityDefinitions: {
+        keycloak: {
+          type: :oauth2,
+          authorizationUrl: 'http://localhost:4000/auth/realms/PetsRankedUserAuth/protocol/openid-connect/auth',
+          tokenUrl: 'http://localhost:4000/auth/realms/PetsRankedUserAuth/protocol/openid-connect/token',
+          flow: 'accessCode',
+          scopes: {}
+        }
+      },
       paths: {},
+      security: [
+        {
+          keycloak: []
+        }
+      ],
       servers: [
         {
           url: "",
