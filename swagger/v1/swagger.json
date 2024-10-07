@@ -4,20 +4,10 @@
     "title": "API V1",
     "version": "v1"
   },
-  "securityDefinitions": {
-    "keycloak": {
-      "type": "oauth2",
-      "authorizationUrl": "http://localhost:4000/auth/realms/PetsRankedUserAuth/protocol/openid-connect/auth",
-      "tokenUrl": "http://localhost:4000/auth/realms/PetsRankedUserAuth/protocol/openid-connect/token",
-      "flow": "accessCode",
-      "scopes": {
-      }
-    }
-  },
   "paths": {
     "/pets": {
       "get": {
-        "summary": "",
+        "summary": "Get all Pets",
         "tags": [
           "Pets"
         ],
@@ -28,7 +18,7 @@
         }
       },
       "post": {
-        "summary": "",
+        "summary": "Creates a Pet",
         "tags": [
           "Pets"
         ],
@@ -84,6 +74,9 @@
                   },
                   "AdultSize": {
                     "type": "integer"
+                  },
+                  "user_id": {
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -98,7 +91,8 @@
                   "ChildFriendly",
                   "AnimalFriendly",
                   "RaiseDifficulty",
-                  "AdultSize"
+                  "AdultSize",
+                  "user_id"
                 ]
               }
             }
@@ -108,7 +102,7 @@
     },
     "/pets/{id}": {
       "get": {
-        "summary": "",
+        "summary": "Get Pet",
         "tags": [
           "Pets"
         ],
@@ -165,6 +159,9 @@
                     },
                     "AdultSize": {
                       "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -179,7 +176,8 @@
                     "ChildFriendly",
                     "AnimalFriendly",
                     "RaiseDifficulty",
-                    "AdultSize"
+                    "AdultSize",
+                    "user_id"
                   ]
                 }
               }
@@ -191,7 +189,7 @@
         }
       },
       "put": {
-        "summary": "",
+        "summary": "Update Pet",
         "tags": [
           "Pets"
         ],
@@ -248,6 +246,9 @@
                     },
                     "AdultSize": {
                       "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "string"
                     }
                   }
                 }
@@ -302,6 +303,9 @@
                   },
                   "AdultSize": {
                     "type": "integer"
+                  },
+                  "user_id": {
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -316,7 +320,8 @@
                   "ChildFriendly",
                   "AnimalFriendly",
                   "RaiseDifficulty",
-                  "AdultSize"
+                  "AdultSize",
+                  "user_id"
                 ]
               }
             }
@@ -324,7 +329,7 @@
         }
       },
       "delete": {
-        "summary": "",
+        "summary": "Delete Pet",
         "tags": [
           "Pets"
         ],
@@ -382,9 +387,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "Uid": {
-                    "type": "string"
-                  },
                   "Name": {
                     "type": "string"
                   },
@@ -393,7 +395,6 @@
                   }
                 },
                 "required": [
-                  "uid",
                   "name",
                   "email"
                 ]
@@ -427,9 +428,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "Uid": {
-                      "type": "string"
-                    },
                     "Name": {
                       "type": "string"
                     },
@@ -438,7 +436,6 @@
                     }
                   },
                   "required": [
-                    "uid",
                     "name",
                     "email"
                   ]
@@ -474,9 +471,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "Uid": {
-                      "type": "string"
-                    },
                     "Name": {
                       "type": "string"
                     },
@@ -501,9 +495,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "Uid": {
-                    "type": "string"
-                  },
                   "Name": {
                     "type": "string"
                   },
@@ -512,7 +503,6 @@
                   }
                 },
                 "required": [
-                  "Uid",
                   "Name",
                   "Email"
                 ]

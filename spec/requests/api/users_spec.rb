@@ -19,15 +19,14 @@ RSpec.describe 'api/users', type: :request do
             parameter name: :user, in: :body, schema: {
                 type: :object,
                 properties: {
-                    Uid: { type: :string },
                     Name: { type: :string },
                     Email: { type: :string }
                 },
-                required: [ 'uid' , 'name' , 'email' ]
+                required: [ 'name' , 'email' ]
             }
 
             response '201', 'User Created' do
-                let(:user) { { Uid: 'id' , Name: 'name' , Email: 'email' } }
+                let(:user) { { Name: 'name' , Email: 'email' } }
                 run_test!
             end
 
@@ -48,13 +47,12 @@ RSpec.describe 'api/users', type: :request do
             response '200', 'Success' do
                 schema type: :object,
                     properties: {
-                        Uid: { type: :string },
                         Name: { type: :string },
                         Email: { type: :string },
                     },
-                    required: [ 'uid' , 'name' , 'email' ]
+                    required: [ 'name' , 'email' ]
 
-                let(:id) { User.create(Uid: 'id' , Name: 'name' , Email: 'email').id }
+                let(:id) { User.create(Name: 'name' , Email: 'email').id }
                 run_test!
             end
 
@@ -74,23 +72,21 @@ RSpec.describe 'api/users', type: :request do
             parameter name: :user, in: :body, schema: {
                 type: :object,
                 properties: {
-                        Uid: { type: :string },
                         Name: { type: :string },
                         Email: { type: :string },
                     },
-                    required: [ 'Uid' , 'Name' , 'Email' ]
+                    required: [ 'Name' , 'Email' ]
             }
             
             response '200', 'Success' do
                 schema type: :object,
                     properties: {
-                        Uid: { type: :string },
                         Name: { type: :string },
                         Email: { type: :string },
                     }
 
-                let(:id) { User.create(Uid: 'id' , Name: 'name' , Email: 'email').id }
-                let(:user) { { Uid: 'id' , Name: 'name' , Email: 'email' } }
+                let(:id) { User.create(Name: 'name' , Email: 'email').id }
+                let(:user) { {Name: 'name' , Email: 'email' } }
 
                 run_test!
             end
@@ -115,7 +111,7 @@ RSpec.describe 'api/users', type: :request do
             parameter name: :id, in: :path, type: :string
             
             response '204', 'No Content' do
-                let(:id) { User.create(Uid: 'id' , Name: 'name' , Email: 'email').id }
+                let(:id) { User.create(Name: 'name' , Email: 'email').id }
                 
                 run_test!
             end
