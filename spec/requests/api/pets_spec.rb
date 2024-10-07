@@ -30,18 +30,19 @@ RSpec.describe 'api/pets', type: :request do
                   ChildFriendly: { type: :integer },
                   AnimalFriendly: { type: :integer },
                   RaiseDifficulty: { type: :integer },
-                  AdultSize: { type: :integer }
+                  AdultSize: { type: :integer },
+                  user_id: { type: :string }
                 },
-                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize' ]
+                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize', 'user_id' ]
             }
 
             response '201', 'Pet Created' do
-                let(:user) { { Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1 } }
+                let(:pet) { { Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1, user_id: '1' } }
                 run_test!
             end
 
             response '422', 'Invalid Request' do
-                let(:user) { { Breed: 'breed' } }
+                let(:pet) { { Breed: 'breed' } }
                 run_test!
             end
         end        
@@ -68,11 +69,12 @@ RSpec.describe 'api/pets', type: :request do
                   ChildFriendly: { type: :integer },
                   AnimalFriendly: { type: :integer },
                   RaiseDifficulty: { type: :integer },
-                  AdultSize: { type: :integer }
+                  AdultSize: { type: :integer },
+                  user_id: { type: :string }
                 },
-                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize' ]
+                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize', 'user_id' ]
 
-                let(:id) { User.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1).id }
+                let(:id) { Pet.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1, user_id: '1').id }
                 run_test!
             end
 
@@ -103,9 +105,10 @@ RSpec.describe 'api/pets', type: :request do
                   ChildFriendly: { type: :integer },
                   AnimalFriendly: { type: :integer },
                   RaiseDifficulty: { type: :integer },
-                  AdultSize: { type: :integer }
+                  AdultSize: { type: :integer },
+                  user_id: { type: :string }
                 },
-                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize' ]
+                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize', 'user_id' ]
             }
             
             response '200', 'Success' do
@@ -122,11 +125,12 @@ RSpec.describe 'api/pets', type: :request do
                   ChildFriendly: { type: :integer },
                   AnimalFriendly: { type: :integer },
                   RaiseDifficulty: { type: :integer },
-                  AdultSize: { type: :integer }
+                  AdultSize: { type: :integer },
+                  user_id: { type: :string }
                 }
 
-                let(:id) { User.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1).id }
-                let(:user) { { Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1 } }
+                let(:id) { Pet.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1).id }
+                let(:pet) { { Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1 } }
 
                 run_test!
             end
@@ -138,7 +142,7 @@ RSpec.describe 'api/pets', type: :request do
             end
 
             response '422', 'Invalid Request' do
-                let(:user) { { Name: 'name' } }
+                let(:pet) { { Breed: 'breed' } }
                 run_test!
             end
 
@@ -151,7 +155,7 @@ RSpec.describe 'api/pets', type: :request do
             parameter name: :id, in: :path, type: :string
             
             response '204', 'No Content' do
-                let(:id) { User.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1).id }
+                let(:id) { Pet.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1, user_id: '1').id }
                 
                 run_test!
             end
