@@ -15,9 +15,12 @@ services:
     links:
       - mongo
     depends_on:
-      - mongo
+      mongo:
+        condition: service_started
+      api:
+        condition: service_started
     networks:
-      - mongo-compose-network
+      - api-network
 
   mongo:
     image: mongo
@@ -25,12 +28,13 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: 'pets_ranked_api_production'
     ports:
       - "27017:27017"
     volumes:
       - /f/Documentos/Projetos/Development/Github/PetsRankedAPI/MongoDB:/data/db
     networks:
-      - mongo-compose-network
+      - api-network
 
   api:
     build: .
@@ -38,16 +42,21 @@ services:
     container_name: api
     ports:
       - '3000:3000'
-    command: bash -c "rm -f tmp/pids/server.pid && bin/setup && rails s -b 0.0.0.0"
+    command: bash -c "rm -f tmp/pids/server.pid || true && bin/setup && bundle exec rails s -b 0.0.0.0"
+    environment:
+      MONGODB_URL: mongodb://mongo:27017/
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
     volumes:
       - .:/app
-      - rubygems:/usr/local/bundle
     depends_on:
       mongo:
         condition: service_started
     links:
       - mongo
+    networks:
+      - api-network
 
 networks: 
-    mongo-compose-network:
+    api-network:
       driver: bridge
