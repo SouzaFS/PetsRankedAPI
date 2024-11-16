@@ -32,7 +32,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - /f/Documentos/Projetos/Development/Github/PetsRankedAPI/MongoDB:/data/db
+      - ./MongoDB:/data/db
     networks:
       - api-network
 
