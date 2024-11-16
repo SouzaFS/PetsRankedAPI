@@ -32,6 +32,22 @@ services:
     networks:
       - mongo-compose-network
 
+  api:
+    build: .
+    working_dir: /app
+    container_name: api
+    ports:
+      - '3000:3000'
+    command: bash -c "rm -f tmp/pids/server.pid && bin/setup && rails s -b 0.0.0.0"
+    volumes:
+      - .:/app
+      - rubygems:/usr/local/bundle
+    depends_on:
+      mongo:
+        condition: service_started
+    links:
+      - mongo
+
 networks: 
     mongo-compose-network:
       driver: bridge

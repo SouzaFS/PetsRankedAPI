@@ -41,3 +41,4 @@ end
 
 gem 'rswag'
 gem 'mongoid'
+gem 'rspec-rails'
