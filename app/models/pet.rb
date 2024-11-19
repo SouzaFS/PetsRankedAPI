@@ -13,4 +13,6 @@ class Pet
   field :AnimalFriendly, type: Integer
   field :RaiseDifficulty, type: Integer
   field :AdultSize, type: Integer
+
+  belongs_to :user
 end

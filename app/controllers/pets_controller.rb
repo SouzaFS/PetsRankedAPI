@@ -5,7 +5,12 @@ class PetsController < ApplicationController
   def index
     @pets = Pet.all
 
-    render json: @pets
+    if @pets.any?
+      render json: @pets
+    else
+      head :not_found
+    end
+
   end
 
   # GET /pets/1
@@ -16,12 +21,18 @@ class PetsController < ApplicationController
   # POST /pets
   def create
     @pet = Pet.new(pet_params)
+    @user = User.find(@pet.user_id)
 
-    if @pet.save
-      render json: @pet, status: :created, location: @pet
+    if @user.nil?
+      render json: @user.errors, status: :not_found
     else
-      render json: @pet.errors, status: :unprocessable_entity
+      if @pet.save
+        render json: @pet, status: :created, location: @pet
+      else
+        render json: @pet.errors, status: :unprocessable_entity
+      end
     end
+
   end
 
   # PATCH/PUT /pets/1
@@ -46,6 +57,6 @@ class PetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pet_params
-      params.require(:pet).permit(:Breed, :Energy, :Allegiance, :Intelligence, :Territorial, :Loyalty, :Bonded, :Noisy, :ChildFriendly, :AnimalFriendly, :RaiseDifficulty, :AdultSize)
+      params.require(:pet).permit(:user_id, :Breed, :Energy, :Allegiance, :Intelligence, :Territorial, :Loyalty, :Bonded, :Noisy, :ChildFriendly, :AnimalFriendly, :RaiseDifficulty, :AdultSize)
     end
 end
