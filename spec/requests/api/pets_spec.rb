@@ -31,13 +31,13 @@ RSpec.describe 'api/pets', type: :request do
                   AnimalFriendly: { type: :integer },
                   RaiseDifficulty: { type: :integer },
                   AdultSize: { type: :integer },
-                  #user_id: { type: :string }
+                  user_id: { type: :string }
                 },
-                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize' ]#, 'user_id' ]
+                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize' , 'user_id' ]
             }
 
             response '201', 'Pet Created' do
-                let(:pet) { { Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1,} }#, user_id: '1' } }
+                let(:pet) { { Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1, user_id: '1' } }
                 run_test!
             end
 
@@ -70,11 +70,11 @@ RSpec.describe 'api/pets', type: :request do
                   AnimalFriendly: { type: :integer },
                   RaiseDifficulty: { type: :integer },
                   AdultSize: { type: :integer },
-                  #user_id: { type: :string }
+                  user_id: { type: :string }
                 },
-                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize' ]#, 'user_id' ]
+                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize' 'user_id' ]
 
-                let(:id) { Pet.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1).id }#, user_id: '1').id }
+                let(:id) { Pet.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1, user_id: '1').id }
                 run_test!
             end
 
@@ -106,9 +106,9 @@ RSpec.describe 'api/pets', type: :request do
                   AnimalFriendly: { type: :integer },
                   RaiseDifficulty: { type: :integer },
                   AdultSize: { type: :integer },
-                  #user_id: { type: :string }
+                  user_id: { type: :string }
                 },
-                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize' ]#, 'user_id' ]
+                required: [ 'Breed' , 'Energy' , 'Allegiance' , 'Intelligence' , 'Territorial' , 'Loyalty' , 'Bonded' , 'Noisy' , 'ChildFriendly' , 'AnimalFriendly' , 'RaiseDifficulty' , 'AdultSize', 'user_id' ]
             }
             
             response '200', 'Success' do
@@ -126,7 +126,7 @@ RSpec.describe 'api/pets', type: :request do
                   AnimalFriendly: { type: :integer },
                   RaiseDifficulty: { type: :integer },
                   AdultSize: { type: :integer },
-                  #user_id: { type: :string }
+                  user_id: { type: :string }
                 }
 
                 let(:id) { Pet.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1).id }
@@ -155,7 +155,7 @@ RSpec.describe 'api/pets', type: :request do
             parameter name: :id, in: :path, type: :string
             
             response '204', 'No Content' do
-                let(:id) { Pet.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1).id }#, user_id: '1').id }
+                let(:id) { Pet.create(Breed: 'breed' , Energy: 1 , Allegiance: 1 , Intelligence: 1 , Territorial: 1 , Loyalty: 1 , Bonded: 1 , Noisy: 1 , ChildFriendly: 1 , AnimalFriendly: 1, RaiseDifficulty: 1, AdultSize: 1, user_id: '1').id }
                 
                 run_test!
             end
