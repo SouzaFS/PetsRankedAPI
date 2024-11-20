@@ -1,0 +1,567 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "description": "JWT key necessary to use API calls",
+        "type": "http",
+        "scheme": "bearer",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "paths": {
+    "/pets": {
+      "get": {
+        "summary": "Get all Pets",
+        "tags": [
+          "Pets"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a Pet",
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "Pet Created"
+          },
+          "422": {
+            "description": "Invalid Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Breed": {
+                    "type": "string"
+                  },
+                  "Energy": {
+                    "type": "integer"
+                  },
+                  "Allegiance": {
+                    "type": "integer"
+                  },
+                  "Intelligence": {
+                    "type": "integer"
+                  },
+                  "Territorial": {
+                    "type": "integer"
+                  },
+                  "Loyalty": {
+                    "type": "integer"
+                  },
+                  "Bonded": {
+                    "type": "integer"
+                  },
+                  "Noisy": {
+                    "type": "integer"
+                  },
+                  "ChildFriendly": {
+                    "type": "integer"
+                  },
+                  "AnimalFriendly": {
+                    "type": "integer"
+                  },
+                  "RaiseDifficulty": {
+                    "type": "integer"
+                  },
+                  "AdultSize": {
+                    "type": "integer"
+                  },
+                  "user_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Breed",
+                  "Energy",
+                  "Allegiance",
+                  "Intelligence",
+                  "Territorial",
+                  "Loyalty",
+                  "Bonded",
+                  "Noisy",
+                  "ChildFriendly",
+                  "AnimalFriendly",
+                  "RaiseDifficulty",
+                  "AdultSize",
+                  "user_id"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pets/{id}": {
+      "get": {
+        "summary": "Get Pet",
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Breed": {
+                      "type": "string"
+                    },
+                    "Energy": {
+                      "type": "integer"
+                    },
+                    "Allegiance": {
+                      "type": "integer"
+                    },
+                    "Intelligence": {
+                      "type": "integer"
+                    },
+                    "Territorial": {
+                      "type": "integer"
+                    },
+                    "Loyalty": {
+                      "type": "integer"
+                    },
+                    "Bonded": {
+                      "type": "integer"
+                    },
+                    "Noisy": {
+                      "type": "integer"
+                    },
+                    "ChildFriendly": {
+                      "type": "integer"
+                    },
+                    "AnimalFriendly": {
+                      "type": "integer"
+                    },
+                    "RaiseDifficulty": {
+                      "type": "integer"
+                    },
+                    "AdultSize": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Breed",
+                    "Energy",
+                    "Allegiance",
+                    "Intelligence",
+                    "Territorial",
+                    "Loyalty",
+                    "Bonded",
+                    "Noisy",
+                    "ChildFriendly",
+                    "AnimalFriendly",
+                    "RaiseDifficulty",
+                    "AdultSizeuser_id"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Pet",
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Breed": {
+                      "type": "string"
+                    },
+                    "Energy": {
+                      "type": "integer"
+                    },
+                    "Allegiance": {
+                      "type": "integer"
+                    },
+                    "Intelligence": {
+                      "type": "integer"
+                    },
+                    "Territorial": {
+                      "type": "integer"
+                    },
+                    "Loyalty": {
+                      "type": "integer"
+                    },
+                    "Bonded": {
+                      "type": "integer"
+                    },
+                    "Noisy": {
+                      "type": "integer"
+                    },
+                    "ChildFriendly": {
+                      "type": "integer"
+                    },
+                    "AnimalFriendly": {
+                      "type": "integer"
+                    },
+                    "RaiseDifficulty": {
+                      "type": "integer"
+                    },
+                    "AdultSize": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Invalid Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Breed": {
+                    "type": "string"
+                  },
+                  "Energy": {
+                    "type": "integer"
+                  },
+                  "Allegiance": {
+                    "type": "integer"
+                  },
+                  "Intelligence": {
+                    "type": "integer"
+                  },
+                  "Territorial": {
+                    "type": "integer"
+                  },
+                  "Loyalty": {
+                    "type": "integer"
+                  },
+                  "Bonded": {
+                    "type": "integer"
+                  },
+                  "Noisy": {
+                    "type": "integer"
+                  },
+                  "ChildFriendly": {
+                    "type": "integer"
+                  },
+                  "AnimalFriendly": {
+                    "type": "integer"
+                  },
+                  "RaiseDifficulty": {
+                    "type": "integer"
+                  },
+                  "AdultSize": {
+                    "type": "integer"
+                  },
+                  "user_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Breed",
+                  "Energy",
+                  "Allegiance",
+                  "Intelligence",
+                  "Territorial",
+                  "Loyalty",
+                  "Bonded",
+                  "Noisy",
+                  "ChildFriendly",
+                  "AnimalFriendly",
+                  "RaiseDifficulty",
+                  "AdultSize",
+                  "user_id"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Pet",
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Get all Users",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "Bearer": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates an User",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "User Created"
+          },
+          "422": {
+            "description": "Invalid Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Email": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "email"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get User",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Name": {
+                      "type": "string"
+                    },
+                    "Email": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "email"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update User",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Name": {
+                      "type": "string"
+                    },
+                    "Email": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Invalid Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Email": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Name",
+                  "Email"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete User",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://{defaultHost}",
+      "variables": {
+        "defaultHost": {
+          "default": "localhost:3000"
+        }
+      }
+    }
+  ]
+}
