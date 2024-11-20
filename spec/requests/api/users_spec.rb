@@ -9,6 +9,7 @@ RSpec.describe 'api/users', type: :request do
             produces 'application/json'
             
             response '200', 'Success' do
+                security [Bearer: []]
                 run_test!
             end
         end
