@@ -1,0 +1,10 @@
+db.users.find()
+db.pets.find().pretty()
+show collections
+use pets_ranked_api_production
+show dbs
+authenticate
+username
+login
+show dbs
+show collections

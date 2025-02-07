@@ -107,6 +107,8 @@ GEM
       reline (>= 0.4.2)
     json-schema (5.0.1)
       addressable (~> 2.8)
+    jwt (2.9.3)
+      base64
     logger (1.6.1)
     loofah (2.23.1)
       crass (~> 1.0.2)
@@ -240,6 +242,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  jwt
   mongoid
   puma (>= 5.0)
   rails (~> 7.1.5)
