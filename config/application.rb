@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails"
+require_relative "../app/services/keycloak_configuration"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -28,6 +29,10 @@ module PetsRankedApi
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    # The Configuration of Keycloak Realm and Client Should be Created Here.
+    KeycloakConfiguration.new.initializeKeycloak()
+    
+    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -35,7 +40,6 @@ module PetsRankedApi
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
